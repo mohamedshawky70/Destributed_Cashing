@@ -25,3 +25,7 @@ public async Task<IActionResult> GetAllAsync([FromRoute] int PollId, Cancellatio
 	}
 	return Ok(response);
 }
+
+
+// In Create ,Update and Delete endpoint to get last vesion from caching
+await _cashService.RemoveAsync($"{cashPrefix}-{question.PollId}", cancellationToken);
